@@ -1,0 +1,73 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+bind-address: '*'
+ipv6: false
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  respect-rules: true
+  fake-ip-filter:
+  - '*.lan'
+  - '*.local'
+  - '*.arpa'
+  - time.*.com
+  - ntp.*.com
+  - +.market.xiaomi.com
+  - localhost.ptlogin2.qq.com
+  - '*.msftncsi.com'
+  - www.msftconnecttest.com
+  default-nameserver:
+  - 119.29.29.29
+  - 223.5.5.5
+  proxy-server-nameserver:
+  - 119.29.29.29
+  - 223.5.5.5
+  proxy-server-nameserver-policy:
+    +.dowsion.com:
+    - 119.29.29.29
+    - 223.5.5.5
+    +.stary.cloud:
+    - 119.29.29.29
+    - 223.5.5.5
+  nameserver-policy:
+    geosite:private:
+    - 119.29.29.29
+    - 223.5.5.5
+    geosite:cn:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    geosite:geolocation-!cn:
+    - https://dns.cloudflare.com/dns-query#♻️ 自动选择
+    - https://dns.google/dns-query#♻️ 自动选择
+  nameserver:
+  - https://dns.cloudflare.com/dns-query#♻️ 自动选择
+  - https://dns.google/dns-query#♻️ 自动选择
+  fallback:
+  - https://dns.cloudflare.com/dns-query#♻️ 自动选择
+  - https://dns.google/dns-query#♻️ 自动选择
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+    - gfw
+    - geolocation-!cn
+    ipcidr:
+    - 240.0.0.0/4
+    domain:
+    - +.google.com
+    - +.facebook.com
+    - +.youtube.com
+    - +.twitter.com
+    - +.x.com
+    - +.telegram.org
+    - +.t.me
+    - +.openai.com
+    - +.chatgpt.com
